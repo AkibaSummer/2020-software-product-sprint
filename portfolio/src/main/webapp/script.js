@@ -16,33 +16,32 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-    const greetings =
-        ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+  const greetings = ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
 
-    // Pick a random greeting.
-    const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Pick a random greeting.
+  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-    // Add it to the page.
-    const greetingContainer = document.getElementById('greeting-container');
-    greetingContainer.innerText = greeting;
+  // Add it to the page.
+  const greetingContainer = document.getElementById('greeting-container');
+  greetingContainer.innerText = greeting;
 }
 
 /**
  * Calculate the greatest common divisor.
  */
 function calculateGCD() {
-    function GCD(a, b) {
-        var temp;
-        while (b != 0) {
-            temp = a % b;
-            a = b;
-            b = temp;
-        }
-        return a;
+  function GCD(a, b) {
+    var temp;
+    while (b != 0) {
+      temp = a % b;
+      a = b;
+      b = temp;
     }
-    document.getElementById('result').innerText = "The result is " + GCD(document.getElementById('number1').value, document.getElementById('number2').value);
+    return a;
+  }
+  document.getElementById('result').innerText = "The result is " + GCD(document.getElementById('number1').value, document.getElementById('number2').value);
 }
 
 function toBeNijigen(){
-    document.getElementById('NijigenImage').src="https://api.ixiaowai.cn/api/api.php?"+Math.random();
+  document.getElementById('NijigenImage').src="https://api.ixiaowai.cn/api/api.php?"+Math.random();
 }
