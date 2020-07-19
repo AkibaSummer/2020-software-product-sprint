@@ -100,3 +100,30 @@
  $(document).ready(function() {
    getComments();
  })
+
+
+ google.charts.load('current', { 'packages': ['corechart'] });
+ google.charts.setOnLoadCallback(drawChart);
+
+ /** Fetches color data and uses it to create a chart. */
+ function drawChart() {
+   fetch('/visit-data').then(response => response.json())
+     .then((visits) => {
+       const data = new google.visualization.DataTable();
+       data.addColumn('string', 'Hour');
+       data.addColumn('number', 'Visits');
+       Object.keys(visits).forEach((hour) => {
+         data.addRow([hour, visits[hour]]);
+       });
+
+       const options = {
+         'title': 'Visits Counter',
+         'width': 600,
+         'height': 500
+       };
+
+       const chart = new google.visualization.ColumnChart(
+         document.getElementById('visitCounter'));
+       chart.draw(data, options);
+     });
+ }
