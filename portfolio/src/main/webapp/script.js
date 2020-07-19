@@ -42,10 +42,14 @@
    document.getElementById('result').innerText = "The result is " + GCD(document.getElementById('number1').value, document.getElementById('number2').value);
  }
 
- async function getRandomQuoteUsingAsyncAwait() {
-   const response = await fetch('/random-quote');
-   const quote = await response.text();
-   document.getElementById('quote-container').innerText = quote;
+ async function getQuotesUsingAsyncAwait() {
+   const response = await fetch('/data');
+   const quotes = await response.json();
+   var x = ""
+   for (i in quotes) {
+     x += quotes[i] + "\n";
+   }
+   document.getElementById('quote-container').innerText = x;
  }
 
  function toBeNijigen() {
