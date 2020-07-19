@@ -66,9 +66,17 @@
    document.getElementById('gameImage').src = "/image/Mario.jpg";
  }
 
+ var preResponse = ""
+
  async function postComment() {
    await document.getElementById("commentForm").submit();
-   await new Promise(r => setTimeout(r, 200));
+   while (true) {
+     await new Promise(r => setTimeout(r, 200));
+     if (window.frames["handlePost"].document.body.innerText == preResponse) {
+       continue;
+     }
+     break;
+   }
    comments = JSON.parse(window.frames["handlePost"].document.body.innerText)
    document.getElementById('comments').innerText = parseComments(comments);
  }
