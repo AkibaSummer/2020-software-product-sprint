@@ -3,31 +3,92 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>My Portfolio</title>
+    <title>Rchen's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="script.js"></script>
   </head>
 
-  <body>
+  <body style="background-image: url(http://bg.siteorigin.com/image/generate?color=%23dddddd&pattern=arches&blend=8&intensity=30.00&noise=0.00);" image>
     <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
+      <h1>Rchen's Portfolio</h1>
+      <img src="image/avatar.jpg">
+      <p>Blog:
+        <a href="https://silentselene.com/">SilentSelene</a>
+        <a href="https://pixelbook.silentselene.com/">Pixelbook</a>
+      </p>
+      <p>Github:
+        <a href="https://github.com/AkibaSummer">    AkibaSummer</a>
+      </p>
 
+      <div>
+        <h2>Rchen</h2>
+        <h3>SKILLS</h3>
+        <ul>
+          <li>(proficient): C, C++, Linux, Git</li>
+          <li>(familiar): Python, Go, Java EE, Java SE</li>
+        </ul>
+        <h3>EXPERIENCE</h3>
+        <p><strong>Bytedance AI Camp</strong> <em>AUGUST 2018</em></p>
+        <blockquote>
+          <p>Lectures by Alexander J. Smola, Jia Yangqing and Zhou Zhihua, etc.</p>
+          <p>Hackathon of a machine learning workflow system.</p>
+        </blockquote>
+        <p><strong>Programming contest</strong> <em>SEPTEMBER 2014 - PRESENT</em></p>
+        <blockquote>
+          <p>Learning algorithms and data structures.</p>
+          <p>Participate in several programming competitions such as NOIP, ICPC, CCPC, Kick Start, Hash Code, Codeforces and others.</p>
+        </blockquote>
+        <h4>EDUCATION</h4>
+        <blockquote>
+          <p><strong>Beijing University of Posts and Telecommunications</strong> - Bachelors</p>
+          <p>SEPTEMBER 2017 - JUNE 2021</p>
+        </blockquote>
+        <h3>AWARDS</h3>
+        <ul>
+          <li>2020, Google Hash Code 2020, #978 Worldwide / #20 in China</li>
+          <li>2019, The 2019 ICPC Asia-East Continent Final Contest, Silver Medal</li>
+          <li>2019, The 2019 ICPC Asia Nanjing Regional Contest, Silver Medal</li>
+          <li>2019, Programming Ability Test (Advanced Level) on December, Full Marks</li>
+          <li>2018, The 2018 ICPC Asia Jiaozuo Regional Contest, Bronze Medal</li>
+          <li>2018, 2018 China Collegiate Programming Contest, Qinghuangdao Site, Bronze Medal</li>
+        </ul>
+      </div>
+
+      <h2>Random message</h2>
       <p>Click here to get a random message:</p>
       <button onclick="addRandomGreeting()">Hello</button>
       <div id="greeting-container"></div>
 
-      <p>Click here to see a random quote:</p>
+      <h2>Quotes</h2>
+      <p>Click here to see quotes:</p>
       <button onclick="getQuotesUsingAsyncAwait()">Fetch quotes!</button>
       <div id="quote-container"></div>
 
+      <h2>Calculator</h2>
       <p>This is a calculator that you can use to calculate the greatest common divisor.</p>
       <input id="number1"></input>
       <input id="number2"></input>
       <button onclick="calculateGCD()">calculate！</button>
       <p id="result"></p>
 
-      <img id="NijigenImage" title="Click here to be Nijigen!" onclick="toBeNijigen()" src="image/index.jpg" />
+      <h2>Random Nijigen Image</h2>
+      <img id="NijigenImage" style="height: 365px;" title="Click here to be Nijigen!" onclick="toBeNijigen()" src="image/Nijigen.jpg" />
+
+      <h2>Hobby</h2>
+      <img id="gameImage" style="height: 365px;" title="Click here to show gameImage!" onclick="showGame()" src="image/game.jpg" />
+
+      <h2>Comments</h2>
+      <div id="comments"></div>
+      <form id="commentForm" target="handlePost" action="/postComment" method="POST">
+        <p>Nickname:</p>
+        <input name="name"></input>
+        <p>You can leave a comment here:</p>
+        <textarea name="comment" style="width: 100%; " rows="5"></textarea>
+        </br>
+        <button onclick="postComment()">Submit</button>
+      </form>
+      <iframe name="handlePost" style="display: none;"></iframe>
     </div>
   </body>
 

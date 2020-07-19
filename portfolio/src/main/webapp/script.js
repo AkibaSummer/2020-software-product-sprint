@@ -53,5 +53,42 @@
  }
 
  function toBeNijigen() {
+   document.getElementById('NijigenImage').onload = function() {
+     document.getElementById('NijigenImage').style = "width:100%;";
+   }
    document.getElementById('NijigenImage').src = "https://api.ixiaowai.cn/api/api.php?" + Math.random();
  }
+
+ function showGame() {
+   document.getElementById('gameImage').onload = function() {
+     document.getElementById('gameImage').style = "width:100%;";
+   }
+   document.getElementById('gameImage').src = "/image/Mario.jpg";
+ }
+
+ async function postComment() {
+   await document.getElementById("commentForm").submit();
+   await new Promise(r => setTimeout(r, 200));
+   comments = JSON.parse(window.frames["handlePost"].document.body.innerText)
+   document.getElementById('comments').innerText = parseComments(comments);
+ }
+
+ function parseComments(comments) {
+   var commentsText = "";
+   for (i in comments) {
+     commentsText += comments[i].name + "          " + comments[i].timestamp + "\n";
+     commentsText += comments[i].comment + "\n";
+     commentsText += "\n";
+   }
+   return commentsText;
+ }
+
+ async function getComments() {
+   const response = await fetch('/getComments');
+   const comments = await response.json();
+   document.getElementById('comments').innerText = parseComments(comments);
+ }
+
+ $(document).ready(function() {
+   getComments();
+ })
