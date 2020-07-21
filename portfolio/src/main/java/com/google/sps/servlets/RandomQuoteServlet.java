@@ -17,17 +17,14 @@ package com.google.sps.servlets;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
+/** Servlet that returns a random quote. */
+@WebServlet("/random-quote")
+public final class RandomQuoteServlet extends HttpServlet {
 
   private List<String> quotes;
 
@@ -51,15 +48,11 @@ public class DataServlet extends HttpServlet {
     quotes.add("Those who can imagine anything, can create the impossible. - Alan Turing");
   }
 
-  private String convertToJsonUsingGson(List<String> quotes) {
-    Gson gson = new Gson();
-    String json = gson.toJson(quotes);
-    return json;
-  }
-
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String quote = quotes.get((int) (Math.random() * quotes.size()));
+
     response.setContentType("text/html;");
-    response.getWriter().println(convertToJsonUsingGson(quotes));
+    response.getWriter().println(quote);
   }
 }

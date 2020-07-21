@@ -1,2 +1,7 @@
 target/
 .idea
+*.prefs
+.class
+.project
+.classpath
+.factorypath
